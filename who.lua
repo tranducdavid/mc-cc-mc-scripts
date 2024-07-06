@@ -44,10 +44,15 @@ end
 -- Get the matched citizen
 local citizen = matchedCitizens[1]
 
+-- Function to format skill names and levels
+local function formatSkill(skillName, level)
+  return string.format("%-12s | %2d", skillName, level)
+end
+
 -- Print the details of the matched citizen
 print("Name: " .. citizen.name)
 print("Job: " .. (citizen.job or "Unemployed"))
 print("Skills:")
 for skillName, skillData in pairs(citizen.skills) do
-  print(" - " .. skillName .. ": Level " .. skillData.level)
+  print(" - " .. formatSkill(skillName, skillData.level))
 end
