@@ -26,17 +26,20 @@ end
 -- Colonists by the relevant skills
 local colonistsData = {}
 for _, colonist in ipairs(colonists) do
-    local skills = jobSkills[jobToFilter]
-    if skills then
-        local primarySkillValue = colonist.skills[skills[1]].level or 0
-        local secondarySkillValue = colonist.skills[skills[2]].level or 0
-        table.insert(colonistsData, {
-            id = colonist.id,
-            name = colonist.name,
-            primarySkill = string.format("%2d", primarySkillValue),
-            secondarySkill = string.format("%2d", secondarySkillValue),
-            totalSkill = primarySkillValue + secondarySkillValue
-        })
+    -- Skip colonists that are already assigned to the specified job
+    if colonist.job ~= jobToFilter then
+        local skills = jobSkills[jobToFilter]
+        if skills then
+            local primarySkillValue = colonist.skills[skills[1]].level or 0
+            local secondarySkillValue = colonist.skills[skills[2]].level or 0
+            table.insert(colonistsData, {
+                id = colonist.id,
+                name = colonist.name,
+                primarySkill = string.format("%2d", primarySkillValue),
+                secondarySkill = string.format("%2d", secondarySkillValue),
+                totalSkill = primarySkillValue + secondarySkillValue
+            })
+        end
     end
 end
 
