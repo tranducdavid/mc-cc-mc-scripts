@@ -55,8 +55,9 @@ else
     print("Job '" .. jobToFilter .. "' not found.")
 end
 
--- Print the colonists with their skills
-for _, colonist in ipairs(colonistsData) do
+-- Print the first 10 colonists with their skills
+for i = 1, math.min(10, #colonistsData) do
+    local colonist = colonistsData[i]
     print("[" .. colonist.primarySkill .. "|" .. colonist.secondarySkill .. "] " .. colonist.name)
 end
 
