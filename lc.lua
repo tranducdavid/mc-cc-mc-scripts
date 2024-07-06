@@ -1,5 +1,5 @@
 -- Load the job skills table from the external file
-local jobSkills = dofile("scripts/data/jobSkills.lua")
+local jobSkills = dofile("mc-cc-mc-scripts/data/jobSkills.lua")
 
 -- Get the job to filter by from the command line arguments
 local args = { ... }
